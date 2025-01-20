@@ -38,6 +38,11 @@ body {
   min-height: -webkit-fill-available;
   text-rendering: optimizeSpeed;
   line-height: 1.5;
+  background-color: #D3E9E2; // Apply the same background color universally
+  transition-property: background-color, color, background;
+  transition-duration: 0.3s;
+  transition-timing-function: ease-out;
+  background-attachment: fixed;
 }
 
 a:not([class]) {
@@ -103,22 +108,15 @@ body::-webkit-scrollbar-track {
 body {
   font-family: 'Poppins', -apple-system, BlinkMacSystemFont, avenir next, avenir, helvetica neue,
     helvetica, Ubuntu, roboto, noto, segoe ui, arial, sans-serif;
-  transition-property: background-color, color, background;
-  transition-duration: 0.3s;
-  transition-timing-function: ease-out;
-  background-attachment: fixed;
   font-smoothing: antialiased;
 }
 
 body.light-mode {
   color: #37292C;
-  background-color: white;
-  background-image: linear-gradient(315deg, #ccfbf1 0%, #ffe4e6 50%);
 }
 
 body.dark-mode {
   color: #e9e9e9;
-  background-color: #252526;
 }
 
 body.dark-mode ::selection{
@@ -167,8 +165,6 @@ p, li {
 .gatsby-resp-image-wrapper {
     margin-left: 0 !important;
 }
-
-
 `;
 
 export default GlobalStyle;

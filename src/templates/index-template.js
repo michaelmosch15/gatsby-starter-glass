@@ -1,42 +1,59 @@
 import React from 'react';
-import { graphql } from 'gatsby';
+import { graphql, Link } from 'gatsby';
 import Layout from '../components/layout';
 import PostList from '../components/post-list';
 import styled from 'styled-components';
-import StyledLink from '../components/styled-link';
+import bioProxalImage from '../images/BioProxal_logo_and_name_dark.png';
+import iconImage from '../images/icon.png'; // Import the PNG image
 
 const HomePage = ({ data }) => {
+  // Extract posts, intro text, and title from data
   const posts = data.allMarkdownRemark.nodes;
   const intro = data.markdownRemark.html;
   const title = data.markdownRemark.frontmatter.title;
 
   return (
     <Layout title={title}>
-      <Intro
-        dangerouslySetInnerHTML={{
-          __html: intro,
-        }}
-      />
+      {/* Render the top icon image */}
+      <TopIconImage src={iconImage} alt="Top Icon" />
 
+      {/* Render intro section using HTML content */}
+ <div></div>
+
+      {/* Render the list of posts */}
       <PostList posts={posts} />
-      <StyledLink
-        css={`
-          display: block;
-          margin-top: var(--size-800);
-          margin-bottom: var(--size-800);
-          margin-left: auto;
-          margin-right: auto;
-          width: fit-content;
-        `}
-        to="/blog"
-      >
-        View All posts
-      </StyledLink>
+      
+      {/* Render the image as a link to the /blog page */}
+      <Link to="/blog">
+        <AllPostsImage src={bioProxalImage} alt="View All Posts" />
+      </Link>
     </Layout>
   );
 };
 
 export default HomePage;
+
+// Styled component for the top icon image
+const TopIconImage = styled.img`
+  display: block;
+  margin-top: var(--size-600);
+  margin-left: auto;
+  margin-right: auto;
+  width: 75px; // Adjust the size as needed
+  height: auto; // Maintain aspect ratio
+`;
+
+// Styled component for the bottom image
+const AllPostsImage = styled.img`
+  display: block;
+  margin-top: var(--size-800);
+  margin-bottom: var(--size-800);
+  margin-left: auto;
+  margin-right: auto;
+  width: 200px;
+  height: auto;
+  cursor: pointer;
+`;
 
 const Intro = styled.div`
   display: flex;

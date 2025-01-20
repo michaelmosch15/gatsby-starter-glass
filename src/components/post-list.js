@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import { Link } from "gatsby";
 import Tags from "./tags";
 
 const PostList = ({ posts }) => {
@@ -40,18 +39,14 @@ const PostListItem = ({
     <StyledPostListItem>
       <Tags tags={tags} />
 
-      <PostListTitle>
-        <Link to={slug}>{title}</Link>
-      </PostListTitle>
+      <PostListTitle>{title}</PostListTitle>
       <PostListExcerpt
         dangerouslySetInnerHTML={{
           __html: description || excerpt,
         }}
       />
       <PostListMeta>
-        <span>{date}</span>
-
-        <span>{timeToRead} mins</span>
+  
       </PostListMeta>
     </StyledPostListItem>
   );
@@ -79,20 +74,23 @@ const StyledPostListItem = styled.li`
   position: relative;
   flex-direction: column;
   transition: all 0.3s ease-out;
+  width: 100%;
+  max-width: 45ch; // Set a consistent maximum width
+  background-color: #0A5853; // Set the new background color
 
   body.light-mode & {
     backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.5);
-    background-color: rgba(255, 255, 255, 0.3);
+    border: 6px solid rgba(255, 255, 255, 0.5);
+    background-color: #0A5853; // Use the same color
   }
 
   body.light-mode &:hover {
-    background-color: rgba(255, 255, 255, 0.5);
+    background-color: #0C766E; // Slightly lighter for hover, if desired
   }
 
   body.dark-mode & {
-    background-color: #3b3b3c;
-    border: 1px solid #515151;
+    background-color: #0A5853; // Set the same color for dark mode
+    border: 6px solid #0A5853; // Adjust border as needed
   }
 
   @media screen and (max-width: 500px) {
@@ -109,20 +107,6 @@ const PostListTitle = styled.h2`
   text-transform: capitalize;
   font-size: var(--size-600);
   font-weight: 700;
-
-  & a {
-    text-decoration: none;
-    color: inherit;
-  }
-
-  & a::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-  }
 `;
 
 const PostListExcerpt = styled.p`
@@ -132,7 +116,6 @@ const PostListExcerpt = styled.p`
 
 const PostListMeta = styled.div`
   margin-top: 2rem;
-
   font-size: var(--size-300);
   display: flex;
   justify-content: space-between;

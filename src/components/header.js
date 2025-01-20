@@ -38,34 +38,6 @@ const Header = () => {
 
   return (
     <StyledHeader>
-      <HeaderWrapper>
-        <HeaderTitle>
-          <Link to="/">{site.siteMetadata.title}</Link>
-        </HeaderTitle>
-
-        <HeaderNavList>
-          {HEADER_NAV_ITEM.map((item, index) => {
-            if (item.isExternal) {
-              return (
-                <HeaderNavListItem key={index}>
-                  <a href={item.url} target="_blank" rel="noopener noreferrer">
-                    {item.label}
-                  </a>
-                </HeaderNavListItem>
-              );
-            }
-
-            return (
-              <HeaderNavListItem key={index}>
-                <Link to={item.url}>{item.label}</Link>
-              </HeaderNavListItem>
-            );
-          })}
-          <HeaderNavListItem>
-            <ThemeSwitch />
-          </HeaderNavListItem>
-        </HeaderNavList>
-      </HeaderWrapper>
     </StyledHeader>
   );
 };
@@ -121,11 +93,11 @@ const StyledNavList = styled.ul`
 
 const StyledNavListItem = styled.li`
   &:not(:last-of-type) {
-    margin-right: 2rem;
+    margin-right: 1rem;
   }
   @media screen and (max-width: 700px) {
     &:not(:last-of-type) {
-      margin-right: 1rem;
+      margin-right: 0.25rem;
     }
   }
   & a {
